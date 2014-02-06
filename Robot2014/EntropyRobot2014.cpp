@@ -3,6 +3,7 @@
 #include "EntropyDrive.h"
 #include "EntropyJoystick.h"
 #include "ExampleSHS.h"
+#include "AcquisitionArms.h"
 
 
 class EntropyRobot2014 : public IterativeRobot
@@ -21,7 +22,7 @@ class EntropyRobot2014 : public IterativeRobot
 	
 	// Declare SHS Subsystems here
 	EntropyDrive MyRobot;		// The Robot Drive instance
-		
+	AcquisitionArms Arm;	
 	
 	// Local variables to count the number of periodic loops performed
 	UINT32 m_autoPeriodicLoops;
@@ -63,7 +64,7 @@ public:
 		
 		// Initialize SHS Subsystems here
 		MyRobot.Initialize();
-		
+		Arm.Initialize();
 		
 		printf("RobotInit() completed.\n");
 	}
@@ -84,6 +85,7 @@ public:
 		m_telePeriodicLoops = 0;				// Reset the loop counter for teleop mode
 		m_dsPacketsReceivedInCurrentSecond = 0;	// Reset the number of dsPackets in current second
 				
+		Arm.TeleopInitialize();
 		printf("Telop Init completed.\n");
 	}
 
@@ -99,6 +101,7 @@ public:
 		
 		//Disable Drive
 		MyRobot.Cleanup();
+		Arm.Cleanup();
 		//MyShooter.Cleanup();
 		
 		// while disabled, printout the duration of current disabled mode in seconds
@@ -123,6 +126,9 @@ public:
 		
 		//Feed joystick inputs to each subsystem here		
 		MyRobot.DriveRobot(DriveStick->GetY(),DriveStick->GetX());
+		Arm.UpperVerticalPos(GameStick);
+		Arm.LowerVerticalPos(GameStick);
+			
 		//MyRobot.DriveRobotTrig(DriveStick->GetY(),DriveStick->GetX());
 		
 	} // TeleopPeriodic(void)
