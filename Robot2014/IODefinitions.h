@@ -40,6 +40,16 @@ public:
     	GAME_BUTTON_SHOOTER_RIGHT
     } Game_Stick_IO;
     
+    enum { 
+    	ANALOG_INPUT_NOT_USED = 0,
+    	ANALOG_UNUSED_1,
+    	ANALOG_UNUSED_2,
+    	ANALOG_UNUSED_3,
+    	ANALOG_UNUSED_4,
+    	ANALOG_UNUSED_5,
+    	AUTONOMOUS_SELECTOR_SWITCH,
+    } Analog_Input_IO;
+    
     /**
      * TODO: Map the correct buttons from the drive stick to this. 
      */
