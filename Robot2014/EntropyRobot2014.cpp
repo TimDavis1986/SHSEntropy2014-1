@@ -2,6 +2,7 @@
 #include "IODefinitions.h"
 #include "EntropyDrive.h"
 #include "EntropyJoystick.h"
+#include "EntropyInfraredSensor.h"
 #include "ExampleSHS.h"
 #include "AcquisitionArms.h"
 
@@ -28,7 +29,11 @@ class EntropyRobot2014 : public IterativeRobot
 	UINT32 m_autoPeriodicLoops;
 	UINT32 m_disabledPeriodicLoops;
 	UINT32 m_telePeriodicLoops;
-		
+	
+	//Creating a test "InfraredSensor", by way of using an Autonomous Selector Switch
+	EntropyInfraredSensor InfraredSensor;
+	
+	
 public:
 /**
  * Constructor for this "EntropyRobotDrive2014" Class.
@@ -65,6 +70,7 @@ public:
 		// Initialize SHS Subsystems here
 		MyRobot.Initialize();
 		Arm.Initialize();
+		InfraredSensor.Initialize();
 		
 		printf("RobotInit() completed.\n");
 	}
@@ -130,6 +136,10 @@ public:
 		Arm.LowerVerticalPos(GameStick);
 			
 		//MyRobot.DriveRobotTrig(DriveStick->GetY(),DriveStick->GetX());
+
+//		DriverStationLCD::GetInstance()->Printf(DriverStationLCD::kUser_Line1, 1, "Sensor output: %f", InfraredSensor.GetValue());
+//		DriverStationLCD::GetInstance()->UpdateLCD();
+
 		
 	} // TeleopPeriodic(void)
 
