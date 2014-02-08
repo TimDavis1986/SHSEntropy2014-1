@@ -4,6 +4,7 @@
 #include "WPILib.h"
 #include "EntropySubsystemTemplate.h"
 #include "EntropyJoystick.h"
+#include "EntropyInfraredSensor.h"
 
 class AcquisitionArms : public EntropySubsystemTemplate
 {
@@ -16,10 +17,14 @@ private:
 	static const int lowerSolenoidChannel = 1;
 	Solenoid * upperSolenoid;
 	Solenoid * lowerSolenoid;
+	
+	EntropyInfraredSensor InfraredSensor;
 public:
 	AcquisitionArms();
 	
 	bool Initialize ();
+	
+	void Update();
 	
 	void TeleopInitialize();
 		
