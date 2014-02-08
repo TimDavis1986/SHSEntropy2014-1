@@ -19,6 +19,8 @@ private:
 	Solenoid * lowerSolenoid;
 	
 	EntropyInfraredSensor InfraredSensor;
+	CANJaguar * MotorBelt;
+	CANJaguar * MotorExtender;
 public:
 	AcquisitionArms();
 	
@@ -35,6 +37,10 @@ public:
 	void UpperVerticalPos(EntropyJoystick * GameStick);
 	
 	void LowerVerticalPos(EntropyJoystick * GameStick);
+
+	void Extend(EntropyJoystick * GameStick);
+	
+	void BeltEnable(EntropyJoystick * GameStick);
 };
 
 #endif

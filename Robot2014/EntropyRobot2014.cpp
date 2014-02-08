@@ -128,6 +128,10 @@ public:
 		//Feed joystick inputs to each subsystem here		
 		MyRobot.DriveRobot(DriveStick->GetY(),DriveStick->GetX());
 		Arm.Update();
+		Arm.UpperVerticalPos(GameStick);
+		Arm.LowerVerticalPos(GameStick);
+		Arm.Extend(GameStick);
+		Arm.BeltEnable(GameStick);
 			
 		//MyRobot.DriveRobotTrig(DriveStick->GetY(),DriveStick->GetX());
 

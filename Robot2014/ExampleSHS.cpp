@@ -8,8 +8,8 @@ ExampleSHS::ExampleSHS() {
 
 bool ExampleSHS::Initialize()
 {
-	MotorShootAz = new CANJaguar(IODefinitions::UNUSED_6);
-	MotorShootEl = new CANJaguar(IODefinitions::UNUSED_7);
+	MotorShootAz = new CANJaguar(IODefinitions::MOTOR_ACQUISITION_BELT);
+	MotorShootEl = new CANJaguar(IODefinitions::MOTOR_ACQUISITION_EXTENDER);
 	return true;
 }
 
